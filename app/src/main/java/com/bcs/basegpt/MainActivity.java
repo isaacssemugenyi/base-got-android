@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
@@ -40,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
             .readTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS);
 
+    /**
+     * Retrofit builder to make calls to the API
+     */
     Retrofit retrofit = new Retrofit.Builder()
 //            .baseUrl("http://10.0.2.2:3000/")
 //            .baseUrl("https://carpedia-api-20-0-2.onrender.com/")
@@ -91,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
                         chatOutput.setText(resultFromDB);
                         messageSource.setText("Results retrieved from previous results");
                         chatInput.setText("");
+                        chatInput.clearFocus();
                         return;
                     } else {
 //                    If not found, call the api

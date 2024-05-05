@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.bcs.basegpt.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -31,7 +32,9 @@ public class CustomAdapter extends ArrayAdapter<ChatItem> {
         ChatItem currentItem = prevChats.get(position);
 
         TextView questionTextView = listItem.findViewById(R.id.questionTextView);
+        FloatingActionButton deleteButton = listItem.findViewById(R.id.delete_query_btn);
         questionTextView.setText(currentItem.getQuestion());
+        deleteButton.setTag(currentItem.getId());
         listItem.setTag(currentItem.getId());
 
         return listItem;
